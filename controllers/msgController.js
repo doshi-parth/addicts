@@ -4,7 +4,10 @@ exports.triggersms = (req, res) => {
     req.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
+    var currentdate = new Date(); 
+    var x = currentdate.getDate() + "/" + (currentdate.getMonth()+1) + '   '
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() ;
 
 
     var accountSid = 'AC43c3c5b7ed5240e1cf17d5847d389f81'; // Your Account SID from www.twilio.com/console
@@ -26,9 +29,9 @@ exports.triggersms = (req, res) => {
     })
 
     client.messages.create({
-        body: "Hi! This is an automated message to alert you that your Sponsee,\
+        body: `Hi! This is an automated message to alert you that your Sponsee,\
          John Doe, has spent over 10 minutes in an area concentrated with drinkers, \
-         starting at [TIME]. You may choose to reach out to them and give them support.",
+         starting at ${x}. You may choose to reach out to them and give them support.`,
         to: '4805775641',  // Text this number
         from: '12055909366' // From a valid Twilio number
     })

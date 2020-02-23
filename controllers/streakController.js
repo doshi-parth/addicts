@@ -62,6 +62,10 @@ client.messages
        })
       .then((messages) => {
         let msg = messages[0].body.split(" ")[1];
+        var datetime = "Last Sync: " + currentdate.getDate() + "/" 
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" ;
+        console.log(datetime);
         // console.log(msg)
         let streaks = new Streak(
             {
