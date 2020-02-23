@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/idhant96/addicts/issues"
   },
-  "homepage": "https://github.com/idhant96/addicts#readme"
+  "homepage": "https://github.com/idhant96/addicts#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.2",
+    "nodemon": "^2.0.2",
+    "twilio": "^3.39.5"
+  }
 }
