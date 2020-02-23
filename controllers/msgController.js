@@ -14,7 +14,10 @@ exports.triggersms = (req, res) => {
     const client = new twilio(accountSid, authToken);
 
     client.messages.create({
-        body: 'Hello from Node',
+        body: "Hi! The area you've entered has been identified as a place likely to trigger you. \
+        You are advised to leave the area immediately. If you're located inside the red zone for \
+        10 minutes, your sponsor will be notified. If you feel triggered at any point,\
+         contact helpline at +35636343 or talk with the chatbot in the app.",
         to: '4806163942',  // Text this number
         from: '12055909366' // From a valid Twilio number
     })
@@ -23,7 +26,9 @@ exports.triggersms = (req, res) => {
     })
 
     client.messages.create({
-        body: 'Hello from idhant',
+        body: "Hi! This is an automated message to alert you that your Sponsee,\
+         John Doe, has spent over 10 minutes in an area concentrated with drinkers, \
+         starting at [TIME]. You may choose to reach out to them and give them support.",
         to: '4805775641',  // Text this number
         from: '12055909366' // From a valid Twilio number
     })
