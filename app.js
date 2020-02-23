@@ -2,18 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const web = require('./routes/web');
+const https = require('https');
+const fs = require('fs');
+const https_options = {
 
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
+    key: fs.readFileSync("/etc/letsencrypt/live/simplyq.tech/privkey.pem"),
+  
+    cert: fs.readFileSync("/etc/letsencrypt/live/simplyq.tech/fullchain.pem")
+  };
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/', web);
 
-app.listen(3000, () => {
- console.log("Server running on port ");
-});
+app.use('/', web);
+var httpsServer = https.createServer(https_options,app);
+httpsServer.listen(3000);
+
+// app.listen(3001, () => {
+//  console.log("Server running on port ");
+// });
