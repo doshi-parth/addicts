@@ -2,6 +2,9 @@ const Stories = require('../models/story');
 const mongoose = require('../connection');
 
 exports.addstory = (req, res) => {
+    req.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     let stories = new Stories(
         {
@@ -22,6 +25,9 @@ exports.addstory = (req, res) => {
 }
 
 exports.getstories = (req, res) => {
+    req.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let stories = mongoose.model('Story');
     stories.find({}, (err, data) => {
         if(err){

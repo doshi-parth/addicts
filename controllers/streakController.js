@@ -2,6 +2,9 @@ const Streak = require('../models/streak');
 const mongoose = require('../connection');
 
 exports.addcontent = (req, res) => {
+    req.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
     let streaks = new Streak(
         {
